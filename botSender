@@ -1,0 +1,43 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+
+
+
+mail = "XXXXXXXXX@gmail.com" #write your mail here
+password ='xxxxx' #write your password here
+PATH = "C:\Program Files (x86)\chromedriver" #this is where the chrome driver is
+driver = webdriver.Chrome(PATH)
+
+driver.implicitly_wait(5) # waiting for a few seconds in order to not over requst the clinet.
+driver.get("https://www.drushim.co.il/jobs/cat24/?experience=2&ssaen=3")
+#html = driver.page_source
+driver.implicitly_wait(5)
+driver.maximize_window()
+clicki= driver.find_element(By.CSS_SELECTOR,".v-btn__content")
+clicki.click()
+driver.find_element(By.ID,"email-login-field").send_keys(mail)
+driver.find_element(By.ID,"password-login-field").send_keys(password)
+
+login = driver.find_element(By.ID,"submit-login-btn")
+login.click()
+driver.implicitly_wait(5)
+clicki.click()
+html = driver.find_element(By.TAG_NAME, 'html')
+html.send_keys(Keys.PAGE_DOWN)
+code= driver.page_source
+print(code)
+print("login sucsees")
+#print(html)
+
+#click1= driver.find_element(By.NAME,'הצג לי משרות נוספות')
+#click1.click()
+#htmlsplit = html.split()
+##for i in htmlsplit:
+  ##  if(i=="send-cv-btn")
+while(True):
+    pass
+#elemnt = driver.find_element(By.LINK_TEXT,'Love calculator')
+#elemnt.click()
+
+
